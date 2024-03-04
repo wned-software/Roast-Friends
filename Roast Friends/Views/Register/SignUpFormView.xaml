@@ -2,14 +2,61 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Roast_Friends.Views.Register.SignUpFormView"
+             BackgroundColor="#60CDD0"
+             Shell.NavBarIsVisible="False" 
              Title="SignUpFormView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="font2"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Margin" Value="0,10"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="font1"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#4E9A9A"/>
+                <Setter Property="Margin" Value="0,20"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout Padding="20">
-            <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
-            <Entry x:Name="PasswordEntry" Placeholder="Hasło" IsPassword="true"/>
-            <Entry x:Name="ConfirmPasswordEntry" Placeholder="Potwierdź hasło" IsPassword="true"/>
-            <Entry x:Name="LoginEntry" Placeholder="Login"/>
-            <Button Text="Zarejestruj się" Clicked="RegisterButton_Clicked"/>
-        </StackLayout>
+        <ScrollView>
+            <Grid Padding="20" RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*,*">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Portrait">
+                            <VisualState.Setters>
+                                <Setter Property="Grid.RowDefinitions" Value="Auto, Auto, Auto, Auto, Auto"/>
+                                <Setter Property="Grid.ColumnDefinitions" Value="*,*"/>
+                                <Setter TargetName="EmailEntry" Property="Grid.Column" Value="0"/>
+                                <Setter TargetName="EmailEntry" Property="Grid.Row" Value="0"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Landscape">
+                            <VisualState.Setters>
+                                <Setter Property="Grid.RowDefinitions" Value="Auto, Auto"/>
+                                <Setter Property="Grid.ColumnDefinitions" Value="*,*,*,*"/>
+                                <Setter TargetName="EmailEntry" Property="Grid.Column" Value="0"/>
+                                <Setter TargetName="EmailEntry" Property="Grid.Row" Value="0"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+
+                <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" Grid.ColumnSpan="2"/>
+                <Entry x:Name="PasswordEntry" Placeholder="Hasło" IsPassword="true" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <Entry x:Name="ConfirmPasswordEntry" Placeholder="Potwierdź hasło" IsPassword="true" Grid.Row="2" Grid.ColumnSpan="2"/>
+                <Entry x:Name="LoginEntry" Placeholder="Login" Grid.Row="3" Grid.ColumnSpan="2"/>
+                <Button Text="Zarejestruj się" Clicked="RegisterButton_Clicked" Grid.Row="4" Grid.ColumnSpan="2"/>
+
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
