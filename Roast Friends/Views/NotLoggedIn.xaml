@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Roast_Friends.NotLoggedIn"
+             Title="NotLoggedIn"             
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#60CDD0">
+    <Grid RowDefinitions="20,*,*"  x:Name="initialMessageGrid" HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="PROFIL" FontFamily="font2" Grid.Row="0" HorizontalTextAlignment="Center"  TextColor="Black"/>
+        
+        <Label Text="Zaloguj"
+            FontFamily="font2"
+            Margin="0,20,0,0"
+            FontSize="40"
+            Grid.Row="2"
+            VerticalOptions="Center"
+            TextColor="Black"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center" />
+        <Button Grid.Row="2" BackgroundColor="Transparent" ZIndex="99" Clicked="Button_Clicked_1"/>
+
+        <Label Text="Zarejestruj się"
+            FontFamily="font2"
+            FontSize="40"
+            Grid.Row="1"
+            VerticalOptions="Center"
+            TextColor="White"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center" />
+        <Button Grid.Row="1" BackgroundColor="Transparent" ZIndex="99" Clicked="Button_Clicked"/>
+    </Grid>
+</ContentPage>

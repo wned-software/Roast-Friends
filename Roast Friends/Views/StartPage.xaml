@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Roast_Friends.MainPage"
+             BackgroundColor="#60CDD0">
+    <Grid ColumnDefinitions="*" RowDefinitions="Auto,*,Auto">
+        <Label Grid.Row="0" Grid.Column="1" Text="Roast Friends" Margin="10" FontSize="35" FontFamily="font2" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid>
+                <Button BackgroundColor="Transparent" Clicked="Button_Clicked" ZIndex="999"/>
+                <Label x:Name="StartLabelShadow" Text="START" FontFamily="font1" FontSize="80" TextColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TranslationX="8" TranslationY="8"/>
+                <Label x:Name="StartLabel" Text="START" FontFamily="font1" FontSize="80" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+            <Label Text="Usiądźcie wygodnie, otwórzcie chipsy i zaczynajcie grę, która może zmienić waszą relacje na zawsze." FontSize="18" FontFamily="font2" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <Label Grid.Row="2" Grid.Column="1" Text="Ostrzeżenie! Twórcy nie ponoszą odpowiedzialności za wszelkie zaistniałe sytuacje po kliknięciu w start" FontFamily="font2" FontSize="12" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="20"/>
+    </Grid>
+</ContentPage>

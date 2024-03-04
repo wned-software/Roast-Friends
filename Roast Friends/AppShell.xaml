@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Roast_Friends.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Roast_Friends"
+    xmlns:local1="clr-namespace:Roast_Friends.Views.Register"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Roast_Friends">
+
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="StartPage" />
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:ChooseFirstPerson}"
+        Route="chooseFirstPerson" />
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:Question}"
+        Route="question" />
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:GiveNextPerson}"
+        Route="giveNextPerson" />
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:UseAccountInfo}" 
+        Route="useaccountinfo"
+        />
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:NotLoggedIn}" 
+        Route="notloggedin"
+        />
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local1:SignUpFormView}" 
+        Route="signupformview"
+        />
+
+
+</Shell>

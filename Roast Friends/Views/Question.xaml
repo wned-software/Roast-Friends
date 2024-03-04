@@ -1,0 +1,21 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Roast_Friends.Question"
+             Title="Question"  
+             Shell.NavBarIsVisible="False" 
+             BackgroundColor="#60CDD0">
+    <Grid>
+    <Button BackgroundColor="Transparent" Clicked="Button_Clicked" ZIndex="999"/>
+        <Grid ColumnDefinitions="*" RowDefinitions="Auto,*,Auto">
+            <Label Grid.Column="1" Text="Przeczytaj na głos" Margin="10" FontSize="35" FontFamily="font2" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+            <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                <Grid>
+                    <Label Text="" x:Name="QuestionLabel" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="font2" FontSize="40" TextColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TranslationX="3" TranslationY="3"/>
+                    <Label Text="" x:Name="QuestionLabelShadow" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="font2" FontSize="40" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Grid>
+            </StackLayout>
+            <Label Grid.Row="2" Grid.Column="1" Text="Odpowiadaj zgodnie z prawdą" FontFamily="font2" FontSize="12" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="20"/>
+        </Grid>
+        <Image Source="dotnet_bot.png" HorizontalOptions="End" VerticalOptions="End" WidthRequest="100" HeightRequest="100"/>
+    </Grid>
+</ContentPage>
