@@ -7,11 +7,17 @@ public partial class LogInFormView : ContentPage
 {
     private FirebaseAuthClient _authClient;
 
-        public LogInFormView(FirebaseAuthClient authClient)
-        {
-            InitializeComponent();
-            _authClient = authClient;
-        }
+    public LogInFormView(FirebaseAuthClient authClient)
+    {
+        InitializeComponent();
+        _authClient = authClient;
+    }
+
+    protected override async void OnAppearing()
+    {
+        if (Settings.isLoggedIn) await Shell.Current.GoToAsync("///userprofile");
+        base.OnAppearing();
+    }
 
     private async void LoginButton_Clicked(object sender, EventArgs e)
     {
