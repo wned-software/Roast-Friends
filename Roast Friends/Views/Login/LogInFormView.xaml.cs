@@ -21,8 +21,13 @@ public partial class LogInFormView : ContentPage
         try
         {
             var userCredential = await _authClient.SignInWithEmailAndPasswordAsync(email, password);
+            var token = await userCredential.User.GetIdTokenAsync(false);
+            await SecureStorage.SetAsync("auth_token", token);
+
             await DisplayAlert("Success", "Login successful.", "OK");
             Settings.isLoggedIn = true;
+
+            await Shell.Current.GoToAsync("///userprofile");
         }
         catch (Exception ex)
         {

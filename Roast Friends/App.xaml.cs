@@ -1,4 +1,5 @@
 ﻿using Roast_Friends;
+using Roast_Friends.Other;
 
 namespace Roast_Friends
 {
@@ -8,6 +9,25 @@ namespace Roast_Friends
         {
             InitializeComponent();
             MainPage = new AppShell();
+            InitializeApp();
+        }
+
+        private async void InitializeApp()
+        {
+            await TryAutoLoginAsync();
+        }
+
+        private async Task TryAutoLoginAsync()
+        {
+            var authToken = await SecureStorage.GetAsync("auth_token");
+            if (!string.IsNullOrEmpty(authToken))
+            {
+                Settings.isLoggedIn = true;
+            }
+            else
+            {
+                Settings.isLoggedIn = false;
+            }
         }
     }
 }
