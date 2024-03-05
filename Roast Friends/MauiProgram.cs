@@ -5,6 +5,7 @@ using Firebase.Database;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.Audio;
 using Roast_Friends.Other;
+using Roast_Friends.Views.Login;
 using Roast_Friends.Views.Register;
 
 namespace Roast_Friends
@@ -45,6 +46,8 @@ namespace Roast_Friends
                 }));
 
             builder.Services.AddTransient<SignUpFormView>();
+            builder.Services.AddTransient<LogInFormView>();
+
 
 #if DEBUG
             builder.Logging.AddDebug();

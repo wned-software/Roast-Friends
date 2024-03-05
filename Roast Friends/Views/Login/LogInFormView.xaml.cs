@@ -1,15 +1,17 @@
 using Firebase.Auth;
+using Roast_Friends.Other;
 
 namespace Roast_Friends.Views.Login;
 
 public partial class LogInFormView : ContentPage
 {
     private FirebaseAuthClient _authClient;
-    public LogInFormView(FirebaseAuthClient authClient)
-    {
-        InitializeComponent();
-        _authClient = authClient;
-    }
+
+        public LogInFormView(FirebaseAuthClient authClient)
+        {
+            InitializeComponent();
+            _authClient = authClient;
+        }
 
     private async void LoginButton_Clicked(object sender, EventArgs e)
     {
@@ -20,7 +22,7 @@ public partial class LogInFormView : ContentPage
         {
             var userCredential = await _authClient.SignInWithEmailAndPasswordAsync(email, password);
             await DisplayAlert("Success", "Login successful.", "OK");
-
+            Settings.isLoggedIn = true;
         }
         catch (Exception ex)
         {

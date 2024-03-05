@@ -12,5 +12,6 @@ namespace Roast_Friends.Other
         internal const string FireBaseSecretKey = "77a5ZoZOUVd7TxUJ24hUUPDWlYqUGZuJD3h4SLkE";
         internal const string FireBaseWebApiKey = "AIzaSyC4BbiY4uwHB6xO41k_XX0VvFs_P91uSIY";
         internal const string AuthDomain = "roastfriends-11f64.firebaseapp.com";
+        internal static bool isLoggedIn = false;
     }
 }
