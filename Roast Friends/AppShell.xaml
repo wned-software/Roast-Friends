@@ -47,7 +47,7 @@
         />
     <ShellContent
         Title=""
-        ContentTemplate="{DataTemplate login:LogInPageFormView}" 
+        ContentTemplate="{DataTemplate login:LogInFormView}" 
         Route="loginformview"
         />
 
