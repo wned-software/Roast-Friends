@@ -14,10 +14,11 @@
         <StackLayout Grid.Row="0" 
                      HorizontalOptions="Center"
                      VerticalOptions="CenterAndExpand">
-            <Label Text="PROFIL: NAZWA"
-                   FontSize="22"
-                   HorizontalTextAlignment="Center"
-                   FontFamily="font2" />
+            <Label x:Name="ProfileNameLabel"
+               Text="PROFIL: NAZWA"
+               FontSize="22"
+               HorizontalTextAlignment="Center"
+               FontFamily="font2" />
             <Label Text="WYBIERZ W JAKI SPOSÓB CHCESZ ODBLOKOWAĆ WIĘCEJ PYTAŃ."
                    FontSize="18" 
                    HorizontalTextAlignment="Center"
@@ -84,15 +85,16 @@
                  HorizontalOptions="Center"
                  Spacing="5">
                 <Label Text="ILOŚĆ ODBLOKOWANYCH PYTAŃ:"
-               FontAttributes="Bold"
-               FontSize="18"
-               VerticalTextAlignment="Center"
-               FontFamily="font2" />
-                <Label Text="....."
-               FontAttributes="Bold"
-               FontSize="18"
-               VerticalTextAlignment="Center"
-               FontFamily="font2" />
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   VerticalTextAlignment="Center"
+                   FontFamily="font2" />
+                <Label 
+                   x:Name="UnlockedQuestionsLabel"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   VerticalTextAlignment="Center"
+                   FontFamily="font2" />
             </StackLayout>
             <Button Text="WYLOGUJ SIĘ"
                 BackgroundColor="Transparent"
