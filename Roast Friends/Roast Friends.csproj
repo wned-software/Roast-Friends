@@ -71,6 +71,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Login\LogInFormView.xaml.cs">
+	    <DependentUpon>LogInFormView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\StartPage.xaml.cs">
 	    <DependentUpon>StartPage.xaml</DependentUpon>
 	  </Compile>
@@ -81,6 +84,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\GiveNextPerson.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\LogInFormView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NotLoggedIn.xaml">

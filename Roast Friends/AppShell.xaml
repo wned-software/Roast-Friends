@@ -3,46 +3,52 @@
     x:Class="Roast_Friends.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Roast_Friends"
-    xmlns:local1="clr-namespace:Roast_Friends.Views.Register"
+    xmlns:views="clr-namespace:Roast_Friends"
+    xmlns:register="clr-namespace:Roast_Friends.Views.Register"
+    xmlns:login="clr-namespace:Roast_Friends.Views.Login"
     Shell.FlyoutBehavior="Disabled"
     Title="Roast_Friends">
 
 
     <ShellContent
         Title=""
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate views:MainPage}"
         Route="StartPage" />
 
     <ShellContent
         Title=""
-        ContentTemplate="{DataTemplate local:ChooseFirstPerson}"
+        ContentTemplate="{DataTemplate views:ChooseFirstPerson}"
         Route="chooseFirstPerson" />
 
     <ShellContent
         Title=""
-        ContentTemplate="{DataTemplate local:Question}"
+        ContentTemplate="{DataTemplate views:Question}"
         Route="question" />
 
     <ShellContent
         Title=""
-        ContentTemplate="{DataTemplate local:GiveNextPerson}"
+        ContentTemplate="{DataTemplate views:GiveNextPerson}"
         Route="giveNextPerson" />
 
     <ShellContent
         Title=""
-        ContentTemplate="{DataTemplate local:UseAccountInfo}" 
+        ContentTemplate="{DataTemplate views:UseAccountInfo}" 
         Route="useaccountinfo"
         />
     <ShellContent
         Title=""
-        ContentTemplate="{DataTemplate local:NotLoggedIn}" 
+        ContentTemplate="{DataTemplate views:NotLoggedIn}" 
         Route="notloggedin"
         />
     <ShellContent
         Title=""
-        ContentTemplate="{DataTemplate local1:SignUpFormView}" 
+        ContentTemplate="{DataTemplate register:SignUpFormView}" 
         Route="signupformview"
+        />
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate login:LogInPageFormView}" 
+        Route="loginformview"
         />
 
 

@@ -18,7 +18,7 @@ public partial class MainPage : ContentPage
         player.Volume = 10.0;
         player.Play();
 
-        await Shell.Current.GoToAsync("///signupformview");
+        await Shell.Current.GoToAsync("///loginformview");
     }
 
     private void StartPulsingAnimation()
