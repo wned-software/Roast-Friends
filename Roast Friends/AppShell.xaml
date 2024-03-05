@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:Roast_Friends"
+    xmlns:views2="clr-namespace:Roast_Friends.Views"
     xmlns:register="clr-namespace:Roast_Friends.Views.Register"
     xmlns:login="clr-namespace:Roast_Friends.Views.Login"
     Shell.FlyoutBehavior="Disabled"
@@ -49,6 +50,11 @@
         Title=""
         ContentTemplate="{DataTemplate login:LogInFormView}" 
         Route="loginformview"
+        />
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate views2:UserProfile}" 
+        Route="userprofile"
         />
 
 

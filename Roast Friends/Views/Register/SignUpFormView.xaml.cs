@@ -44,12 +44,19 @@ public partial class SignUpFormView : ContentPage
             return;
         }
 
+        var userExists = await CheckIfUserExists(email, login);
+        if (userExists)
+        {
+            await DisplayAlert("B³¹d", "Email lub nazwa u¿ytkownika ju¿ istnieje.", "OK");
+            return;
+        }
+
         try
         {
             var userCredential = await _authClient.CreateUserWithEmailAndPasswordAsync(email, password);
             var uid = userCredential.User.Uid;
 
-            await AddUserToDatabase(uid, login);
+            await AddUserToDatabase(uid, login, email);
 
             await DisplayAlert("Sukces", "Rejestracja zakoñczona pomyœlnie.", "OK");
         }
@@ -59,13 +66,34 @@ public partial class SignUpFormView : ContentPage
         }
     }
 
-    private async Task AddUserToDatabase(string uid, string login)
+    private async Task<bool> CheckIfUserExists(string email, string login)
+    {
+        var emailCheck = await _firebaseClient
+            .Child("roastfriends")
+            .Child("users")
+            .OrderBy("email")
+            .EqualTo(email)
+            .OnceAsync<object>();
+        if (emailCheck.Count > 0) return true;
+
+        var loginCheck = await _firebaseClient
+            .Child("roastfriends")
+            .Child("users")
+            .OrderBy("login")
+            .EqualTo(login)
+            .OnceAsync<object>();
+        if (loginCheck.Count > 0) return true;
+
+        return false;
+    }
+
+    private async Task AddUserToDatabase(string uid, string login, string email)
     {
         await _firebaseClient
             .Child("roastfriends")
             .Child("users")
             .Child(uid)
-            .PutAsync(new { login = login, counter = 0, permissions = "user" });
+            .PutAsync(new { login = login, email = email, counter = 0, permissions = "user" });
     }
 
     private bool IsValidEmail(string email)
