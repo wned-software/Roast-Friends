@@ -5,9 +5,11 @@
              BackgroundColor="#60CDD0"
              Shell.NavBarIsVisible="False" 
              Title="LogInFormView">
-    <StackLayout Padding="20">
-        <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
-        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="true"/>
-        <Button Text="Login" Clicked="LoginButton_Clicked"/>
-    </StackLayout>
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
+            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="true"/>
+            <Button Text="Login" Clicked="LoginButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
