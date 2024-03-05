@@ -95,10 +95,11 @@
                FontFamily="font2" />
             </StackLayout>
             <Button Text="WYLOGUJ SIĘ"
-            BackgroundColor="Transparent"
-            TextColor="#008080"
-            HorizontalOptions="Center"
-            FontFamily="font2" />
+                BackgroundColor="Transparent"
+                TextColor="#008080"
+                HorizontalOptions="Center"
+                FontFamily="font2"
+                Clicked="OnLogoutClicked" />
         </StackLayout>
     </Grid>
 </ContentPage>
