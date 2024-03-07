@@ -121,7 +121,7 @@ public partial class Question : ContentPage
 
     }
 
-    private async Task Button_Clicked_1Async(object sender, EventArgs e)
+    private async void Button_Clicked_1(object sender, EventArgs e)
     {
         if (Settings.isLoggedIn) await Shell.Current.GoToAsync("///userprofile");
         else await Shell.Current.GoToAsync("///notloggedin");

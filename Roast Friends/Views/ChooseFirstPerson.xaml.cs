@@ -81,7 +81,7 @@ public partial class ChooseFirstPerson : ContentPage
         await Shell.Current.GoToAsync("///question");
     }
 
-    private async Task Button_ClickedAsync(object sender, EventArgs e)
+    private async void Button_Clicked(object sender, EventArgs e)
     {
         if (Settings.isLoggedIn) await Shell.Current.GoToAsync("///userprofile");
         else await Shell.Current.GoToAsync("///notloggedin");
