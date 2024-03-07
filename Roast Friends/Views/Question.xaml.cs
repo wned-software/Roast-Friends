@@ -1,4 +1,4 @@
-using CommunityToolkit.Maui.Alerts;
+﻿using CommunityToolkit.Maui.Alerts;
 using Firebase.Database;
 using Firebase.Database.Query;
 using Roast_Friends.Other;
@@ -9,37 +9,74 @@ namespace Roast_Friends;
 
 public partial class Question : ContentPage
 {
-    private FirebaseClient firebaseClient;
+    private FirebaseClient _firebaseClient;
     public int counter { get; set; } = 0;
     private const string CounterKey = "counter";
     public QuestionModel SelectedQuestion { get; set; }
     
 
-    public Question()
+    public Question(FirebaseClient firebaseclient)
     {
         InitializeComponent();
-        firebaseClient = new FirebaseClient(
-            Settings.FireBaseDatabaseUrl,
-            new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult(Settings.FireBaseSecretKey) });
+        _firebaseClient = firebaseclient;
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        counter = Preferences.Get(CounterKey, 0);
-        if (counter > 20)
+        if (!Settings.isLoggedIn == true)
         {
-            Toast.Make("Przenoszenie...", CommunityToolkit.Maui.Core.ToastDuration.Short, 20).Show();
-            await Shell.Current.GoToAsync("///StartPage");
+            counter = Preferences.Get(CounterKey, 0);
+            if (counter > 20)
+            {
+                Toast.Make("Przenoszenie...", CommunityToolkit.Maui.Core.ToastDuration.Short, 20).Show();
+                await Shell.Current.GoToAsync("///useaccountinfo");
+            }
+            else
+            {
+                counter++;
+                await FetchQuestion();
+            }
         }
-        await FetchQuestion();
-        
+        else
+        {
+            try { 
+            //jest zalogowany
+
+            var uid = await SecureStorage.GetAsync("user_uid");
+            await DisplayAlert("",uid,"");
+            int userCounter = await _firebaseClient
+                .Child("roastfriends")
+                .Child("users")
+                .Child(uid)
+                .Child("counter")
+                .OnceSingleAsync<int>();
+
+            if (userCounter < 0) {
+                await DisplayAlert("Informacja", "Nie masz już więcej pytań.", "OK");
+                await Shell.Current.GoToAsync("///userprofile");
+            }
+            else
+            {
+                userCounter--;
+                await FetchQuestion();
+                await _firebaseClient
+                    .Child("roastfriends")
+                    .Child("users")
+                    .Child(uid)
+                    .Child("counter")
+                    .PutAsync(userCounter);
+            }
+
+            }
+            catch (Exception e) { await DisplayAlert("a", e.Message, "OK"); }
+        }
     }
 
     private async Task FetchQuestion()
     {
-        counter++;
-        var allQuestions = await firebaseClient
+
+        var allQuestions = await _firebaseClient
             .Child("roastfriends")
             .Child("question")
             .OnceAsync<QuestionModel>();
@@ -64,7 +101,7 @@ public partial class Question : ContentPage
         if (counter > 20)
         {
             Toast.Make("Przenoszenie...", CommunityToolkit.Maui.Core.ToastDuration.Short, 20).Show();
-            await Shell.Current.GoToAsync("///StartPage");
+            await Shell.Current.GoToAsync("///useaccountinfo");
         }
         Preferences.Set(CounterKey, counter);
         Toast.Make("counter: " + counter, CommunityToolkit.Maui.Core.ToastDuration.Long, 20).Show();

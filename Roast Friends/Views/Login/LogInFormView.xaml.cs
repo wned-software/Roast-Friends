@@ -1,4 +1,4 @@
-using Firebase.Auth;
+﻿using Firebase.Auth;
 using Firebase.Database;
 using Roast_Friends.Other;
 using Roast_Friends.Models;
@@ -49,7 +49,7 @@ namespace Roast_Friends.Views.Login
 
                     if (userWithEmail == null)
                     {
-                        await DisplayAlert("Error", "User not found. Please check your login or register.", "OK");
+                        await DisplayAlert("Błąd", "Nie znaleziono takiego użytkownika. Sprawdź swoje dane albo załóż nowe konto.", "OK");
                         return;
                     }
 
@@ -70,32 +70,32 @@ namespace Roast_Friends.Views.Login
 
                 await SecureStorage.SetAsync("user_login", user.login);
 
-                await DisplayAlert("Success", "Login successful.", "OK");
+                await DisplayAlert("Sukces", "Logowanie zakończone sukcesem.", "OK");
                 Settings.isLoggedIn = true;
 
                 await Shell.Current.GoToAsync("///userprofile");
             }
             catch (FirebaseAuthException ex)
             {
-                string errorMessage = "An error occurred during login. Please try again.";
+                string errorMessage = "Wystąpił błąd podczas logowania. Spróbuj ponownie później.";
                 switch (ex.Reason)
                 {
                     case AuthErrorReason.WrongPassword:
-                        errorMessage = "The password is incorrect. Please try again.";
+                        errorMessage = "Hasło jest niepoprawne. Spróbuj jeszcze raz.";
                         break;
                     case AuthErrorReason.UnknownEmailAddress:
                     case AuthErrorReason.UserNotFound:
-                        errorMessage = "The user was not found. Please check your login details or register.";
+                        errorMessage = "Nie znaleziono takiego użytkownika. Sprawdź swoje dane albo załóż nowe konto.";
                         break;
                     case AuthErrorReason.TooManyAttemptsTryLater:
-                        errorMessage = "Too many unsuccessful login attempts. Please try again later.";
+                        errorMessage = "Zbyt wiele nieudanych prób logowania. Spróbuj ponownie później.";
                         break;
                 }
                 await DisplayAlert("Error", errorMessage, "OK");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                await DisplayAlert("Error", "An unexpected error occurred. Please try again.", "OK");
+                await DisplayAlert("Error", "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.", "OK");
             }
         }
     }

@@ -18,7 +18,7 @@ public partial class MainPage : ContentPage
         player.Volume = 10.0;
         player.Play();
 
-        await Shell.Current.GoToAsync("///loginformview");
+        await Shell.Current.GoToAsync("///chooseFirstPerson");
     }
 
     private void StartPulsingAnimation()

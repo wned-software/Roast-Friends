@@ -44,9 +44,10 @@ namespace Roast_Friends
                 {
                     AuthTokenAsyncFactory = () => Task.FromResult(Settings.FireBaseSecretKey)
                 }));
-
+            
             builder.Services.AddTransient<SignUpFormView>();
             builder.Services.AddTransient<LogInFormView>();
+            builder.Services.AddTransient<Question>();
 
 
 #if DEBUG

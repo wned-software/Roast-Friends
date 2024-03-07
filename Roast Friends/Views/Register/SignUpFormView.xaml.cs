@@ -59,6 +59,7 @@ public partial class SignUpFormView : ContentPage
             await AddUserToDatabase(uid, login, email);
 
             await DisplayAlert("Sukces", "Rejestracja zakoñczona pomyœlnie.", "OK");
+            await Shell.Current.GoToAsync("///loginformview");
         }
         catch (Exception ex)
         {
