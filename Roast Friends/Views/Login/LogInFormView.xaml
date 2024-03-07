@@ -5,11 +5,32 @@
              BackgroundColor="#60CDD0"
              Shell.NavBarIsVisible="False" 
              Title="LogInFormView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Margin" Value="0,10"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="font1"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#4E9A9A"/>
+                <Setter Property="Margin" Value="0,20"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="20">
-            <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
-            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="true"/>
-            <Button Text="Login" Clicked="LoginButton_Clicked"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
+                <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="true"/>
+                <Button Text="Login" Clicked="LoginButton_Clicked"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

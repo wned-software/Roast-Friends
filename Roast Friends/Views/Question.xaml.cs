@@ -55,7 +55,7 @@ public partial class Question : ContentPage
                         .Child("counter")
                         .OnceSingleAsync<int>();
 
-                    if (userCounter < 0)
+                    if (userCounter <= 0)
                     {
                         await DisplayAlert("Informacja", "Nie masz już więcej pytań.", "OK");
                         await Shell.Current.GoToAsync("///userprofile");
