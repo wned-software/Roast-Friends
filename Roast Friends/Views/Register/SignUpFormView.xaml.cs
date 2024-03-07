@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Firebase.Database.Query;
+using System.Diagnostics.Metrics;
 
 namespace Roast_Friends.Views.Register;
 
@@ -90,11 +91,12 @@ public partial class SignUpFormView : ContentPage
 
     private async Task AddUserToDatabase(string uid, string login, string email)
     {
+        int cnt = 20 - Preferences.Get("counter", 0);
         await _firebaseClient
             .Child("roastfriends")
             .Child("users")
             .Child(uid)
-            .PutAsync(new { login = login, email = email, counter = 0, permissions = "user" });
+            .PutAsync(new { login = login, email = email, counter = cnt, permissions = "user" });
     }
 
     private bool IsValidEmail(string email)

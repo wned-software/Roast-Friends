@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Plugin.Maui.Audio;
+using Roast_Friends.Other;
 
 namespace Roast_Friends;
 
@@ -78,5 +79,11 @@ public partial class ChooseFirstPerson : ContentPage
         await Task.Delay(1000);
 
         await Shell.Current.GoToAsync("///question");
+    }
+
+    private async Task Button_ClickedAsync(object sender, EventArgs e)
+    {
+        if (Settings.isLoggedIn) await Shell.Current.GoToAsync("///userprofile");
+        else await Shell.Current.GoToAsync("///notloggedin");
     }
 }

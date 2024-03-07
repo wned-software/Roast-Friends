@@ -17,5 +17,8 @@
             <Label Grid.Row="2" Grid.Column="1" Text="Odpowiadaj zgodnie z prawdą" FontFamily="font2" FontSize="12" HorizontalTextAlignment="Center" VerticalOptions="Center" Margin="20"/>
         </Grid>
         <Image Source="dotnet_bot.png" HorizontalOptions="End" VerticalOptions="End" WidthRequest="100" HeightRequest="100"/>
+        <Button BackgroundColor="Transparent" ZIndex="1000" Clicked="Button_Clicked_1"
+        HorizontalOptions="End" VerticalOptions="End" WidthRequest="85" 
+        HeightRequest="85" Margin="10" />
     </Grid>
 </ContentPage>

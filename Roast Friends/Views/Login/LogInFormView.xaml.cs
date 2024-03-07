@@ -69,6 +69,7 @@ namespace Roast_Friends.Views.Login
                     .OnceSingleAsync<UserModel>();
 
                 await SecureStorage.SetAsync("user_login", user.login);
+                await SecureStorage.SetAsync("user_uid", userCredential.User.Uid);
 
                 await DisplayAlert("Sukces", "Logowanie zakończone sukcesem.", "OK");
                 Settings.isLoggedIn = true;

@@ -22,5 +22,8 @@
             <Label x:Name="startLabel" Text="START!" FontFamily="font2" FontSize="60" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
         </Grid>
         <Image Source="dotnet_bot.png" HorizontalOptions="End" VerticalOptions="End" WidthRequest="100" HeightRequest="100"/>
+        <Button BackgroundColor="Transparent"
+        HorizontalOptions="End" VerticalOptions="End" WidthRequest="85" ZIndex="99" Clicked="Button_Clicked"
+        HeightRequest="85" Margin="10" />
     </Grid>
 </ContentPage>

@@ -8,7 +8,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Entry">
-                <Setter Property="FontFamily" Value="font2"/>
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="BackgroundColor" Value="Transparent"/>

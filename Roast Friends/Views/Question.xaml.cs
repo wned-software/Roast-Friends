@@ -40,36 +40,48 @@ public partial class Question : ContentPage
         }
         else
         {
-            try { 
-            //jest zalogowany
-
-            var uid = await SecureStorage.GetAsync("user_uid");
-            await DisplayAlert("",uid,"");
-            int userCounter = await _firebaseClient
-                .Child("roastfriends")
-                .Child("users")
-                .Child(uid)
-                .Child("counter")
-                .OnceSingleAsync<int>();
-
-            if (userCounter < 0) {
-                await DisplayAlert("Informacja", "Nie masz już więcej pytań.", "OK");
-                await Shell.Current.GoToAsync("///userprofile");
-            }
-            else
+            try
             {
-                userCounter--;
-                await FetchQuestion();
-                await _firebaseClient
-                    .Child("roastfriends")
-                    .Child("users")
-                    .Child(uid)
-                    .Child("counter")
-                    .PutAsync(userCounter);
+                //jest zalogowany
+                var uid = await SecureStorage.GetAsync("user_uid");
+
+                if (uid != null)
+                {
+                    Toast.Make(uid, CommunityToolkit.Maui.Core.ToastDuration.Long, 5).Show();
+                    int userCounter = await _firebaseClient
+                        .Child("roastfriends")
+                        .Child("users")
+                        .Child(uid)
+                        .Child("counter")
+                        .OnceSingleAsync<int>();
+
+                    if (userCounter < 0)
+                    {
+                        await DisplayAlert("Informacja", "Nie masz już więcej pytań.", "OK");
+                        await Shell.Current.GoToAsync("///userprofile");
+                    }
+                    else
+                    {
+                        userCounter--;
+                        await FetchQuestion();
+                        await _firebaseClient
+                            .Child("roastfriends")
+                            .Child("users")
+                            .Child(uid)
+                            .Child("counter")
+                            .PutAsync(userCounter);
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Informacja", "UID użytkownika jest pusty.", "OK");
+                }
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("a", e.Message, "OK");
             }
 
-            }
-            catch (Exception e) { await DisplayAlert("a", e.Message, "OK"); }
         }
     }
 
@@ -107,5 +119,11 @@ public partial class Question : ContentPage
         Toast.Make("counter: " + counter, CommunityToolkit.Maui.Core.ToastDuration.Long, 20).Show();
         await Shell.Current.GoToAsync("///giveNextPerson");
 
+    }
+
+    private async Task Button_Clicked_1Async(object sender, EventArgs e)
+    {
+        if (Settings.isLoggedIn) await Shell.Current.GoToAsync("///userprofile");
+        else await Shell.Current.GoToAsync("///notloggedin");
     }
 }
