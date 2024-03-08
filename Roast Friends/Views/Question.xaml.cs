@@ -12,8 +12,9 @@ public partial class Question : ContentPage
     private FirebaseClient _firebaseClient;
     public int counter { get; set; } = 0;
     private const string CounterKey = "counter";
-    public QuestionModel SelectedQuestion { get; set; }
-    
+    public QuestionModel? SelectedQuestion { get; set; }
+
+    public int userCounter;
 
     public Question(FirebaseClient firebaseclient)
     {
@@ -29,7 +30,7 @@ public partial class Question : ContentPage
             counter = Preferences.Get(CounterKey, 0);
             if (counter > 20)
             {
-                Toast.Make("Przenoszenie...", CommunityToolkit.Maui.Core.ToastDuration.Short, 20).Show();
+                await DisplayAlert("Informacja", "Nie masz już więcej darmowych pytań", "OK");
                 await Shell.Current.GoToAsync("///useaccountinfo");
             }
             else
@@ -47,20 +48,14 @@ public partial class Question : ContentPage
 
                 if (uid != null)
                 {
-                    Toast.Make(uid, CommunityToolkit.Maui.Core.ToastDuration.Long, 5).Show();
-                    int userCounter = await _firebaseClient
+                    userCounter = await _firebaseClient
                         .Child("roastfriends")
                         .Child("users")
                         .Child(uid)
                         .Child("counter")
                         .OnceSingleAsync<int>();
 
-                    if (userCounter <= 0)
-                    {
-                        await DisplayAlert("Informacja", "Nie masz już więcej pytań.", "OK");
-                        await Shell.Current.GoToAsync("///userprofile");
-                    }
-                    else
+                    if (!(userCounter <= 0))
                     {
                         userCounter--;
                         await FetchQuestion();
@@ -74,7 +69,8 @@ public partial class Question : ContentPage
                 }
                 else
                 {
-                    await DisplayAlert("Informacja", "UID użytkownika jest pusty.", "OK");
+                    await DisplayAlert("Błąd", "Proszę zalogować się ponownie", "OK");
+                    await Shell.Current.GoToAsync("///loginformview");
                 }
             }
             catch (Exception e)
@@ -87,7 +83,6 @@ public partial class Question : ContentPage
 
     private async Task FetchQuestion()
     {
-
         var allQuestions = await _firebaseClient
             .Child("roastfriends")
             .Child("question")
@@ -110,13 +105,21 @@ public partial class Question : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        if (counter > 20)
+        if (Settings.isLoggedIn)
         {
-            Toast.Make("Przenoszenie...", CommunityToolkit.Maui.Core.ToastDuration.Short, 20).Show();
-            await Shell.Current.GoToAsync("///useaccountinfo");
+            if (userCounter <= 0)
+            {
+                await DisplayAlert("Informacja", "Nie masz już więcej pytań.", "OK");
+                await Shell.Current.GoToAsync("///userprofile");
+            }
+        } else {
+            if (counter > 20)
+            {
+                await Shell.Current.GoToAsync("///useaccountinfo");
+            }
+            Preferences.Set(CounterKey, counter);
         }
-        Preferences.Set(CounterKey, counter);
-        Toast.Make("counter: " + counter, CommunityToolkit.Maui.Core.ToastDuration.Long, 20).Show();
+       
         await Shell.Current.GoToAsync("///giveNextPerson");
 
     }

@@ -1,15 +1,19 @@
-﻿using Plugin.Maui.Audio;
+﻿using Firebase.Database;
+using Firebase.Database.Query;
+using Plugin.Maui.Audio;
+using Roast_Friends.Other;
 
 namespace Roast_Friends;
 
 public partial class MainPage : ContentPage
 {
     private readonly IAudioManager audioManager;
-
-    public MainPage(IAudioManager audioManager)
+    private FirebaseClient _firebaseClient;
+    public MainPage(IAudioManager audioManager, FirebaseClient firebaseClient)
     {
         InitializeComponent();
         StartPulsingAnimation();
+        _firebaseClient = firebaseClient;
         this.audioManager = audioManager;
     }
     private async void Button_Clicked(object sender, EventArgs e)
@@ -18,8 +22,25 @@ public partial class MainPage : ContentPage
         player.Volume = 10.0;
         player.Play();
 
-        await Shell.Current.GoToAsync("///signupformview");
-    }
+        if (Settings.isLoggedIn)
+        {
+
+            var uid = await SecureStorage.GetAsync("user_uid");
+                int userCounter = await _firebaseClient
+                    .Child("roastfriends")
+                    .Child("users")
+                    .Child(uid)
+                    .Child("counter")
+                    .OnceSingleAsync<int>();
+
+            if (userCounter <= 0) await Shell.Current.GoToAsync("///userprofile");
+            else await Shell.Current.GoToAsync("///chooseFirstPerson");
+                    
+        } else
+        { if (Preferences.Get("counter", 0) <= 0) await Shell.Current.GoToAsync("///useaccountinfo");
+          else await Shell.Current.GoToAsync("///chooseFirstPerson");
+        }
+        }
 
     private void StartPulsingAnimation()
     {

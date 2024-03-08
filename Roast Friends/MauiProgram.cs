@@ -5,6 +5,7 @@ using Firebase.Database;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.Audio;
 using Roast_Friends.Other;
+using Roast_Friends.Views;
 using Roast_Friends.Views.Login;
 using Roast_Friends.Views.Register;
 
@@ -26,7 +27,6 @@ namespace Roast_Friends
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
             builder.Services.AddSingleton(AudioManager.Current);
-            builder.Services.AddTransient<MainPage>();
 
             builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig()
             {
@@ -44,11 +44,11 @@ namespace Roast_Friends
                 {
                     AuthTokenAsyncFactory = () => Task.FromResult(Settings.FireBaseSecretKey)
                 }));
-            
             builder.Services.AddTransient<SignUpFormView>();
             builder.Services.AddTransient<LogInFormView>();
             builder.Services.AddTransient<Question>();
-
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<ForgotPassword>();
 
 #if DEBUG
             builder.Logging.AddDebug();

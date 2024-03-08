@@ -83,6 +83,9 @@
 	  <MauiXaml Update="Views\ChooseFirstPerson.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ForgotPassword.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\GiveNextPerson.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
