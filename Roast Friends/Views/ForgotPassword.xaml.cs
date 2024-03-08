@@ -1,6 +1,4 @@
 using Firebase.Auth;
-using FirebaseAdmin.Auth;
-
 namespace Roast_Friends.Views;
 
 public partial class ForgotPassword : ContentPage

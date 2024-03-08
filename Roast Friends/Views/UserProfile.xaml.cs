@@ -56,4 +56,9 @@ public partial class UserProfile : ContentPage
         Settings.isLoggedIn = false;
         await Shell.Current.GoToAsync("///StartPage");
     }
+
+    private void gobackArrow_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("///StartPage");
+    }
 }

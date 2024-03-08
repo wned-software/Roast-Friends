@@ -1,4 +1,4 @@
-using Firebase.Auth;
+ï»¿using Firebase.Auth;
 using Firebase.Database;
 using System;
 using System.Threading.Tasks;
@@ -29,26 +29,26 @@ public partial class SignUpFormView : ContentPage
 
         if (!IsValidEmail(email))
         {
-            await DisplayAlert("B³¹d", "Nieprawid³owy format emaila.", "OK");
+            await DisplayAlert("BÅ‚Ä…d", "NieprawidÅ‚owy format emaila.", "OK");
             return;
         }
 
         if (password.Length < 6)
         {
-            await DisplayAlert("B³¹d", "Has³o musi zawieraæ co najmniej 6 znaków.", "OK");
+            await DisplayAlert("BÅ‚Ä…d", "HasÅ‚o musi zawieraÄ‡ co najmniej 6 znakÃ³w.", "OK");
             return;
         }
 
         if (password != confirmPassword)
         {
-            await DisplayAlert("B³¹d", "Podane has³a nie s¹ identyczne.", "OK");
+            await DisplayAlert("BÅ‚Ä…d", "Podane hasÅ‚a nie sÄ… identyczne.", "OK");
             return;
         }
 
         var userExists = await CheckIfUserExists(email, login);
         if (userExists)
         {
-            await DisplayAlert("B³¹d", "Email lub nazwa u¿ytkownika ju¿ istnieje.", "OK");
+            await DisplayAlert("BÅ‚Ä…d", "Email lub nazwa uÅ¼ytkownika juÅ¼ istnieje.", "OK");
             return;
         }
 
@@ -59,12 +59,12 @@ public partial class SignUpFormView : ContentPage
 
             await AddUserToDatabase(uid, login, email);
 
-            await DisplayAlert("Sukces", "Rejestracja zakoñczona pomyœlnie.", "OK");
+            await DisplayAlert("Sukces", "Rejestracja zakoÅ„czona pomyÅ›lnie.", "OK");
             await Shell.Current.GoToAsync("///loginformview");
         }
         catch (Exception ex)
         {
-            await DisplayAlert("B³¹d", ex.Message, "OK");
+            await DisplayAlert("BÅ‚Ä…d", ex.Message, "OK");
         }
     }
 
