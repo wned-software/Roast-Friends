@@ -61,6 +61,11 @@
         ContentTemplate="{DataTemplate views2:ForgotPassword}" 
         Route="forgotpassword"
         />
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate views2:AddQuestion}" 
+        Route="addquestion"
+        />
 
 
 </Shell>
