@@ -52,6 +52,7 @@ namespace Roast_Friends
             builder.Services.AddTransient<ForgotPassword>();
             builder.Services.AddTransient<UserProfile>();
             builder.Services.AddTransient<AddQuestion>();
+            builder.Services.AddTransient<CheckQuestions>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

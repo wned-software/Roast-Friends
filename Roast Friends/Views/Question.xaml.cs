@@ -111,16 +111,14 @@ public partial class Question : ContentPage
             {
                 await DisplayAlert("Informacja", "Nie masz już więcej pytań.", "OK");
                 await Shell.Current.GoToAsync("///userprofile");
-            }
+            } else await Shell.Current.GoToAsync("///giveNextPerson");
         } else {
             if (counter > 20)
             {
                 await Shell.Current.GoToAsync("///useaccountinfo");
-            }
+            } else await Shell.Current.GoToAsync("///giveNextPerson");
             Preferences.Set(CounterKey, counter);
         }
-       
-        await Shell.Current.GoToAsync("///giveNextPerson");
 
     }
 

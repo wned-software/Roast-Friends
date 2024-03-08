@@ -5,16 +5,31 @@ using Microsoft.Maui.Controls;
 using System;
 using System.Threading.Tasks;
 using Roast_Friends.Models;
+using System.ComponentModel;
 
 namespace Roast_Friends.Views;
 
-public partial class UserProfile : ContentPage
+public partial class UserProfile : ContentPage, INotifyPropertyChanged
 {
     private FirebaseClient _firebaseClient;
+    private bool _isAdmin;
+
+    public bool IsAdmin
+    {
+        get => _isAdmin;
+        set
+        {
+            if (_isAdmin == value) return;
+            _isAdmin = value;
+            OnPropertyChanged(nameof(IsAdmin));
+        }
+    }
+
     public UserProfile(FirebaseClient firebaseClient)
     {
         InitializeComponent();
         _firebaseClient = firebaseClient;
+        this.BindingContext = this;
     }
 
     protected override async void OnAppearing()
@@ -39,9 +54,8 @@ public partial class UserProfile : ContentPage
                     .Child(uid)
                     .OnceSingleAsync<UserModel>();
 
-                UnlockedQuestionsLabel.Text = userDetails.counter.ToString();
+                UnlockedQuestionsLabel.Text = userDetails.counter;
                 IsAdmin = userDetails.permissions == "admin";
-                OnPropertyChanged(nameof(IsAdmin));
             }
         }
         else
@@ -49,6 +63,11 @@ public partial class UserProfile : ContentPage
             await Shell.Current.GoToAsync("///loginformview");
         }
     }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void OnPropertyChanged(string propertyName) =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     private async void CheckQuestions(object sender, EventArgs e)
     {
@@ -75,8 +94,8 @@ public partial class UserProfile : ContentPage
         await Shell.Current.GoToAsync("///StartPage");
     }
 
-    private void gobackArrow_Clicked(object sender, EventArgs e)
+    private async void gobackArrow_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("///StartPage");
+        await Shell.Current.GoToAsync("///StartPage");
     }
 }
