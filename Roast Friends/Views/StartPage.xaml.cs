@@ -26,21 +26,23 @@ public partial class MainPage : ContentPage
         {
 
             var uid = await SecureStorage.GetAsync("user_uid");
-                int userCounter = await _firebaseClient
-                    .Child("roastfriends")
-                    .Child("users")
-                    .Child(uid)
-                    .Child("counter")
-                    .OnceSingleAsync<int>();
+            int userCounter = await _firebaseClient
+                .Child("roastfriends")
+                .Child("users")
+                .Child(uid)
+                .Child("counter")
+                .OnceSingleAsync<int>();
 
             if (userCounter <= 0) await Shell.Current.GoToAsync("///userprofile");
             else await Shell.Current.GoToAsync("///chooseFirstPerson");
-                    
-        } else
-        { if (Preferences.Get("counter", 0) <= 0) await Shell.Current.GoToAsync("///useaccountinfo");
-          else await Shell.Current.GoToAsync("///chooseFirstPerson");
+
         }
+        else
+        {
+            if (Preferences.Get("counter", 0) <= 0) await Shell.Current.GoToAsync("///useaccountinfo");
+            else await Shell.Current.GoToAsync("///chooseFirstPerson");
         }
+    }
 
     private void StartPulsingAnimation()
     {

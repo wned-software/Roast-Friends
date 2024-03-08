@@ -99,5 +99,10 @@ namespace Roast_Friends.Views.Login
                 await DisplayAlert("Error", "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.", "OK");
             }
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

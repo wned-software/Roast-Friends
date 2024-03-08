@@ -30,6 +30,7 @@
                 <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
                 <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="true"/>
                 <Button Text="Login" Clicked="LoginButton_Clicked"/>
+                <Button Text="Zapomniałeś hasła?" ZIndex="20" BackgroundColor="Transparent" FontFamily="" Margin="-10, -10" FontSize="15" HorizontalOptions="Start" VerticalOptions="Start" Clicked="Button_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

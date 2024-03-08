@@ -2,6 +2,7 @@
 using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Firebase.Database;
+using FirebaseAdmin.Auth;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.Audio;
 using Roast_Friends.Other;
