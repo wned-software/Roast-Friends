@@ -67,18 +67,40 @@
             </Frame>
 
             <Frame BackgroundColor="#008080"
-                   CornerRadius="5"
-                   WidthRequest="150"
-                   HeightRequest="150"
-                   Margin="5">
+               CornerRadius="5"
+               WidthRequest="150"
+               HeightRequest="150"
+               Margin="5">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AddQuestion"/>
+                </Frame.GestureRecognizers>
                 <Label Text="DODAJ&#x0a;PYTANIE"
-                       TextColor="White"
-                       FontSize="17"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"
-                       FontFamily="font2" />
+                   TextColor="White"
+                   FontSize="17"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontFamily="font2" />
+            </Frame>
+
+            <Frame BackgroundColor="#008080"
+               CornerRadius="5"
+               WidthRequest="150"
+               HeightRequest="150"
+               Margin="5"
+               IsVisible="{Binding IsAdmin}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CheckQuestions"/>
+                </Frame.GestureRecognizers>
+                <Label Text="SPRAWDŹ&#x0a;PYTANIA"
+                   TextColor="White"
+                   FontSize="17"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontFamily="font2" />
             </Frame>
         </FlexLayout>
 
