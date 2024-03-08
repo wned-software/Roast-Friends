@@ -25,13 +25,17 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="20">
+        <Grid>
+            <Image Source="leftarrow.png" HorizontalOptions="Start" VerticalOptions="Start" 
+                    WidthRequest="45" HeightRequest="35" Margin="10" />
+            <Button BackgroundColor="Transparent"  Margin="10" Clicked="gobackArrow_Clicked"
+                HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="45" x:Name="gobackArrow" HeightRequest="45"/>
+            <StackLayout Padding="20" Margin="0,20">
                 <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"/>
                 <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="true"/>
                 <Button Text="Login" Clicked="LoginButton_Clicked"/>
                 <Button Text="Zapomniałeś hasła?" ZIndex="20" BackgroundColor="Transparent" FontFamily="" Margin="-10, -10" FontSize="15" HorizontalOptions="Start" VerticalOptions="Start" Clicked="Button_Clicked"/>
             </StackLayout>
-        </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -5,7 +5,13 @@
              Shell.NavBarIsVisible="False" 
              BackgroundColor="#60CDD0">
     <Grid>
-    <Button BackgroundColor="Transparent" Clicked="Button_Clicked" ZIndex="999"/>
+        <Image Source="leftarrow.png" Margin="10" HorizontalOptions="Start" VerticalOptions="Start" 
+    WidthRequest="45" HeightRequest="45" />
+        <Button BackgroundColor="Transparent"
+ HorizontalOptions="Start" VerticalOptions="Start" Margin="10" ZIndex="101010" WidthRequest="45" x:Name="gobackArrow"
+ HeightRequest="45"  Clicked="gobackArrow_Clicked"/>
+
+        <Button BackgroundColor="Transparent" Clicked="Button_Clicked" ZIndex="999"/>
         <Grid ColumnDefinitions="*" RowDefinitions="Auto,*,Auto">
             <Label Grid.Column="1" Text="Przeczytaj na głos" Margin="10" FontSize="35" FontFamily="font2" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
             <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">

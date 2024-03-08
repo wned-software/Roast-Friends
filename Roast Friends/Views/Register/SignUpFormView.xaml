@@ -27,7 +27,7 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <Grid Padding="20" RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*,*">
+            <Grid Padding="20" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*,*">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
                         <VisualState x:Name="Portrait">
@@ -49,12 +49,18 @@
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
 
-                <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" Grid.ColumnSpan="2"/>
-                <Entry x:Name="PasswordEntry" Placeholder="Hasło" IsPassword="true" Grid.Row="1" Grid.ColumnSpan="2"/>
-                <Entry x:Name="ConfirmPasswordEntry" Placeholder="Potwierdź hasło" IsPassword="true" Grid.Row="2" Grid.ColumnSpan="2"/>
-                <Entry x:Name="LoginEntry" Placeholder="Login" Grid.Row="3" Grid.ColumnSpan="2"/>
-                <Button Text="Zarejestruj się" Clicked="RegisterButton_Clicked" Grid.Row="4" Grid.ColumnSpan="2"/>
+                <Image Source="leftarrow.png" HorizontalOptions="Start" Grid.Row="0" VerticalOptions="Start" 
+                    WidthRequest="35" HeightRequest="35" />
+                <Button BackgroundColor="Transparent"
+                    HorizontalOptions="Start" VerticalOptions="Start" Margin="0" Grid.Row="0"  WidthRequest="35" x:Name="gobackArrow"
+                    HeightRequest="35" Clicked="gobackArrow_Clicked"/>
 
+                <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <Entry x:Name="PasswordEntry" Placeholder="Hasło" IsPassword="true" Grid.Row="2" Grid.ColumnSpan="2"/>
+                <Entry x:Name="ConfirmPasswordEntry" Placeholder="Potwierdź hasło" IsPassword="true" Grid.Row="3" Grid.ColumnSpan="2"/>
+                <Entry x:Name="LoginEntry" Placeholder="Login" Grid.Row="4" Grid.ColumnSpan="2"/>
+                <Button Text="Zarejestruj się" Clicked="RegisterButton_Clicked" Grid.Row="5" Grid.ColumnSpan="2"/>
+                
             </Grid>
         </ScrollView>
     </ContentPage.Content>

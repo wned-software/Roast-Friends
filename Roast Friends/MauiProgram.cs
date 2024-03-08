@@ -50,6 +50,7 @@ namespace Roast_Friends
             builder.Services.AddTransient<Question>();
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<ForgotPassword>();
+            builder.Services.AddTransient<UserProfile>();
 
 #if DEBUG
             builder.Logging.AddDebug();

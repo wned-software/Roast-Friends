@@ -6,15 +6,10 @@ namespace Roast_Friends.Views;
 public partial class UserProfile : ContentPage
 {
     private FirebaseClient _firebaseClient;
-    public UserProfile()
+    public UserProfile(FirebaseClient firebaseClient)
     {
         InitializeComponent();
-        _firebaseClient = new FirebaseClient(
-                Settings.FireBaseDatabaseUrl,
-                new FirebaseOptions
-                {
-                    AuthTokenAsyncFactory = () => Task.FromResult(Settings.FireBaseSecretKey)
-                });
+        _firebaseClient = firebaseClient;
     }
 
     protected override async void OnAppearing()

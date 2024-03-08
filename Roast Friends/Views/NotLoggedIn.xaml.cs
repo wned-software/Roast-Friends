@@ -16,4 +16,9 @@ public partial class NotLoggedIn : ContentPage
     {
         await Shell.Current.GoToAsync("///loginformview"); 
     }
+
+    private async void gobackArrow_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("///StartPage");
+    }
 }

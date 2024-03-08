@@ -104,5 +104,10 @@ namespace Roast_Friends.Views.Login
         {
 
         }
+
+        private async void gobackArrow_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("///notloggedin");
+        }
     }
 }

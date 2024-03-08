@@ -18,8 +18,11 @@ public partial class ChooseFirstPerson : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+        startMessageGrid.IsVisible = false;
+        initialMessageGrid.IsVisible = true;
 
         await Task.Delay(3000);
+        
 
         initialMessageGrid.IsVisible = false;
         countdownGrid.IsVisible = true;

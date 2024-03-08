@@ -129,4 +129,9 @@ public partial class Question : ContentPage
         if (Settings.isLoggedIn) await Shell.Current.GoToAsync("///userprofile");
         else await Shell.Current.GoToAsync("///notloggedin");
     }
+
+    private async void gobackArrow_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("///StartPage");
+    }
 }
