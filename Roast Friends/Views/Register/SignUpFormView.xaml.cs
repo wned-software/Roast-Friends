@@ -60,7 +60,7 @@ public partial class SignUpFormView : ContentPage
             await AddUserToDatabase(uid, login, email);
 
             await DisplayAlert("Sukces", "Rejestracja zakończona pomyślnie.", "OK");
-            await Shell.Current.GoToAsync("///loginformview");
+            await Shell.Current.GoToAsync("//loginformview");
         }
         catch (Exception ex)
         {
@@ -114,6 +114,6 @@ public partial class SignUpFormView : ContentPage
 
     private async void gobackArrow_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///notloggedin");
+        await Shell.Current.GoToAsync("//notloggedin");
     }
 }

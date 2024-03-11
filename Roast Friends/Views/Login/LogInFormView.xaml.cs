@@ -25,7 +25,7 @@ namespace Roast_Friends.Views.Login
 
         protected override async void OnAppearing()
         {
-            if (Settings.isLoggedIn) await Shell.Current.GoToAsync("///userprofile");
+            if (Settings.isLoggedIn) await Shell.Current.GoToAsync("//userprofile");
             base.OnAppearing();
         }
 
@@ -74,7 +74,7 @@ namespace Roast_Friends.Views.Login
                 await DisplayAlert("Sukces", "Logowanie zakończone sukcesem.", "OK");
                 Settings.isLoggedIn = true;
 
-                await Shell.Current.GoToAsync("///userprofile");
+                await Shell.Current.GoToAsync("//userprofile");
             }
             catch (FirebaseAuthException ex)
             {
@@ -92,22 +92,22 @@ namespace Roast_Friends.Views.Login
                         errorMessage = "Zbyt wiele nieudanych prób logowania. Spróbuj ponownie później.";
                         break;
                 }
-                await DisplayAlert("Error", errorMessage, "OK");
+                await DisplayAlert("Błąd", errorMessage, "OK");
             }
             catch (Exception)
             {
-                await DisplayAlert("Error", "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.", "OK");
+                await DisplayAlert("Błąd", "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.", "OK");
             }
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("///forgotpassword");
+            await Shell.Current.GoToAsync("//forgotpassword");
         }
 
         private async void gobackArrow_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("///notloggedin");
+            await Shell.Current.GoToAsync("//notloggedin");
         }
     }
 }

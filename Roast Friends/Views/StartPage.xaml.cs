@@ -36,19 +36,19 @@ public partial class MainPage : ContentPage
                     .Child("counter")
                     .OnceSingleAsync<int>();
 
-                if (userCounter <= 0) await Shell.Current.GoToAsync("///userprofile");
-                else await Shell.Current.GoToAsync("///chooseFirstPerson");
+                if (userCounter <= 0) await Shell.Current.GoToAsync("//userprofile");
+                else await Shell.Current.GoToAsync("//chooseFirstPerson");
 
             }
             else
             {
-                if (Preferences.Get("counter", 0) <= 0) await Shell.Current.GoToAsync("///useaccountinfo");
-                else await Shell.Current.GoToAsync("///chooseFirstPerson");
+                if (Preferences.Get("counter", 0) <= 0) await Shell.Current.GoToAsync("//useaccountinfo");
+                else await Shell.Current.GoToAsync("//chooseFirstPerson");
             }
 
         } else
         {
-            await DisplayAlert("Error", "Brak połączenia do internetu", "OK");
+            await DisplayAlert("Błąd", "Brak połączenia do internetu", "OK");
         }
        
     }

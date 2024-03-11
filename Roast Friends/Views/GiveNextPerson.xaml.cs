@@ -52,6 +52,6 @@ public partial class GiveNextPerson : ContentPage
 
         countdownGrid.IsVisible = false;
 
-        await Shell.Current.GoToAsync("///question");
+        await Shell.Current.GoToAsync("//question");
     }
 }

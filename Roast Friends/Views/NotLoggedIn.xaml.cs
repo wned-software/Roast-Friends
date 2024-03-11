@@ -9,16 +9,16 @@ public partial class NotLoggedIn : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///signupformview");
+        await Shell.Current.GoToAsync("//signupformview");
     }
 
     private async void Button_Clicked_1(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///loginformview"); 
+        await Shell.Current.GoToAsync("//loginformview"); 
     }
 
     private async void gobackArrow_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///StartPage");
+        await Shell.Current.GoToAsync("//StartPage");
     }
 }

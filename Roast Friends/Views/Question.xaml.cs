@@ -31,7 +31,7 @@ public partial class Question : ContentPage
             if (counter > 20)
             {
                 await DisplayAlert("Informacja", "Nie masz już więcej darmowych pytań", "OK");
-                await Shell.Current.GoToAsync("///useaccountinfo");
+                await Shell.Current.GoToAsync("//useaccountinfo");
             }
             else
             {
@@ -70,7 +70,7 @@ public partial class Question : ContentPage
                 else
                 {
                     await DisplayAlert("Błąd", "Proszę zalogować się ponownie", "OK");
-                    await Shell.Current.GoToAsync("///loginformview");
+                    await Shell.Current.GoToAsync("//loginformview");
                 }
             }
             catch (Exception e)
@@ -110,13 +110,13 @@ public partial class Question : ContentPage
             if (userCounter <= 0)
             {
                 await DisplayAlert("Informacja", "Nie masz już więcej pytań.", "OK");
-                await Shell.Current.GoToAsync("///userprofile");
-            } else await Shell.Current.GoToAsync("///giveNextPerson");
+                await Shell.Current.GoToAsync("//userprofile");
+            } else await Shell.Current.GoToAsync("//giveNextPerson");
         } else {
             if (counter > 20)
             {
-                await Shell.Current.GoToAsync("///useaccountinfo");
-            } else await Shell.Current.GoToAsync("///giveNextPerson");
+                await Shell.Current.GoToAsync("//useaccountinfo");
+            } else await Shell.Current.GoToAsync("//giveNextPerson");
             Preferences.Set(CounterKey, counter);
         }
 
@@ -124,12 +124,12 @@ public partial class Question : ContentPage
 
     private async void Button_Clicked_1(object sender, EventArgs e)
     {
-        if (Settings.isLoggedIn) await Shell.Current.GoToAsync("///userprofile");
-        else await Shell.Current.GoToAsync("///notloggedin");
+        if (Settings.isLoggedIn) await Shell.Current.GoToAsync("//userprofile");
+        else await Shell.Current.GoToAsync("//notloggedin");
     }
 
     private async void gobackArrow_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///StartPage");
+        await Shell.Current.GoToAsync("//StartPage");
     }
 }

@@ -81,6 +81,6 @@ public partial class ChooseFirstPerson : ContentPage
 
         await Task.Delay(1000);
 
-        await Shell.Current.GoToAsync("///question");
+        await Shell.Current.GoToAsync("//question");
     }
 }

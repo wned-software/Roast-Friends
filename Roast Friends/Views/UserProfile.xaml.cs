@@ -57,7 +57,7 @@ public partial class UserProfile : ContentPage, INotifyPropertyChanged
         }
         else
         {
-            await Shell.Current.GoToAsync("///loginformview");
+            await Shell.Current.GoToAsync("//loginformview");
         }
     }
 
@@ -70,17 +70,18 @@ public partial class UserProfile : ContentPage, INotifyPropertyChanged
     {
         if (IsAdmin)
         {
-            await Shell.Current.GoToAsync("///checkquestions");
+            await Shell.Current.GoToAsync("//checkquestions");
         }
         else
         {
-            await DisplayAlert("Access Denied", "You do not have permission to view this page.", "OK");
+            await DisplayAlert("Brak dostêpu", "Nie masz uprawnieñ do wyœwietlenia tej strony.", "OK");
         }
     }
 
+
     private async void AddQuestion(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///addquestion");
+        await Shell.Current.GoToAsync("//addquestion");
     }
 
     private async void OnLogoutClicked(object sender, EventArgs e)
@@ -88,12 +89,12 @@ public partial class UserProfile : ContentPage, INotifyPropertyChanged
         await SecureStorage.SetAsync("auth_token", string.Empty);
         await SecureStorage.SetAsync("user_login", string.Empty);
         Settings.isLoggedIn = false;
-        await Shell.Current.GoToAsync("///StartPage");
+        await Shell.Current.GoToAsync("//StartPage");
     }
 
     private async void gobackArrow_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///StartPage");
+        await Shell.Current.GoToAsync("//StartPage");
     }
 
     private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)

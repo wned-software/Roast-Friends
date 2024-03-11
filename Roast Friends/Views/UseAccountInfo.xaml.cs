@@ -11,7 +11,7 @@ public partial class UseAccountInfo : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        if (Settings.isLoggedIn) await Shell.Current.GoToAsync("///userprofile");
-        else await Shell.Current.GoToAsync("///notloggedin");
+        if (Settings.isLoggedIn) await Shell.Current.GoToAsync("//userprofile");
+        else await Shell.Current.GoToAsync("//notloggedin");
     }
 }

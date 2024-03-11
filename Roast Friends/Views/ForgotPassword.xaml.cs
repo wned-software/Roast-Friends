@@ -15,6 +15,6 @@ public partial class ForgotPassword : ContentPage
         string email = EmailEntry.Text;
         _firebaseAuthClient.ResetEmailPasswordAsync(email);
         await DisplayAlert("Informacja", "Na podany adres email przesłano link do resetowania hasła", "OK");
-        await Shell.Current.GoToAsync("///loginformview");
+        await Shell.Current.GoToAsync("//loginformview");
     }
 }

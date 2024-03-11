@@ -26,7 +26,7 @@ public partial class AddQuestion : ContentPage
         var uid = await SecureStorage.GetAsync("user_uid");
         if (string.IsNullOrEmpty(uid))
         {
-            await DisplayAlert("Error", "Please log in to add a question.", "OK");
+            await DisplayAlert("B³¹d", "Proszê zalogowaæ siê, aby dodaæ pytanie.", "OK");
             return;
         }
 
@@ -34,7 +34,7 @@ public partial class AddQuestion : ContentPage
 
         if (string.IsNullOrWhiteSpace(questionContent))
         {
-            await DisplayAlert("Error", "Question content must be provided.", "OK");
+            await DisplayAlert("B³¹d", "Treœæ pytania musi byæ podana.", "OK");
             return;
         }
 
@@ -58,12 +58,12 @@ public partial class AddQuestion : ContentPage
                 value = questionContent
             });
 
-        await DisplayAlert("Success", "Your question has been added and awaits approval.", "OK");
+        await DisplayAlert("Sukces", "Twoje pytanie zosta³o dodane i oczekuje na zatwierdzenie.", "OK");
         QuestionContentEntry.Text = string.Empty;
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///userprofile");
+        await Shell.Current.GoToAsync("//userprofile");
     }
 }
