@@ -22,26 +22,35 @@ public partial class MainPage : ContentPage
         player.Volume = 10.0;
         player.Play();
 
-        if (Settings.isLoggedIn)
+        var current = Connectivity.NetworkAccess;
+
+        if (current == NetworkAccess.Internet) {
+            if (Settings.isLoggedIn)
+            {
+
+                var uid = await SecureStorage.GetAsync("user_uid");
+                int userCounter = await _firebaseClient
+                    .Child("roastfriends")
+                    .Child("users")
+                    .Child(uid)
+                    .Child("counter")
+                    .OnceSingleAsync<int>();
+
+                if (userCounter <= 0) await Shell.Current.GoToAsync("///userprofile");
+                else await Shell.Current.GoToAsync("///chooseFirstPerson");
+
+            }
+            else
+            {
+                if (Preferences.Get("counter", 0) <= 0) await Shell.Current.GoToAsync("///useaccountinfo");
+                else await Shell.Current.GoToAsync("///chooseFirstPerson");
+            }
+
+        } else
         {
-
-            var uid = await SecureStorage.GetAsync("user_uid");
-            int userCounter = await _firebaseClient
-                .Child("roastfriends")
-                .Child("users")
-                .Child(uid)
-                .Child("counter")
-                .OnceSingleAsync<int>();
-
-            if (userCounter <= 0) await Shell.Current.GoToAsync("///userprofile");
-            else await Shell.Current.GoToAsync("///chooseFirstPerson");
-
+            await DisplayAlert("Error", "Brak połączenia do internetu", "OK");
         }
-        else
-        {
-            if (Preferences.Get("counter", 0) <= 0) await Shell.Current.GoToAsync("///useaccountinfo");
-            else await Shell.Current.GoToAsync("///chooseFirstPerson");
-        }
+       
     }
 
     private void StartPulsingAnimation()
