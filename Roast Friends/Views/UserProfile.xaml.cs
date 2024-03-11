@@ -1,10 +1,7 @@
 using Firebase.Database;
 using Firebase.Database.Query;
-using Roast_Friends.Other;
-using Microsoft.Maui.Controls;
-using System;
-using System.Threading.Tasks;
 using Roast_Friends.Models;
+using Roast_Friends.Other;
 using System.ComponentModel;
 
 namespace Roast_Friends.Views;
@@ -97,5 +94,9 @@ public partial class UserProfile : ContentPage, INotifyPropertyChanged
     private async void gobackArrow_Clicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("///StartPage");
+    }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
     }
 }

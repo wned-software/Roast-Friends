@@ -1,4 +1,4 @@
-using Firebase.Auth;
+﻿using Firebase.Auth;
 namespace Roast_Friends.Views;
 
 public partial class ForgotPassword : ContentPage
@@ -10,9 +10,11 @@ public partial class ForgotPassword : ContentPage
         _firebaseAuthClient = firebaseAuthClient;
 	}
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private async void Button_Clicked(object sender, EventArgs e)
     {
         string email = EmailEntry.Text;
         _firebaseAuthClient.ResetEmailPasswordAsync(email);
+        await DisplayAlert("Informacja", "Na podany adres email przesłano link do resetowania hasła", "OK");
+        await Shell.Current.GoToAsync("///loginformview");
     }
 }

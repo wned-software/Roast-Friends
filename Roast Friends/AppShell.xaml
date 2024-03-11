@@ -71,6 +71,11 @@
         ContentTemplate="{DataTemplate views2:CheckQuestions}" 
         Route="checkquestions"
         />
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate views2:UnlockForFree}" 
+        Route="unlockforfree"
+        />
 
 
 </Shell>

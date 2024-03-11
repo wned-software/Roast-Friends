@@ -100,9 +100,9 @@ namespace Roast_Friends.Views.Login
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-
+            await Shell.Current.GoToAsync("///forgotpassword");
         }
 
         private async void gobackArrow_Clicked(object sender, EventArgs e)

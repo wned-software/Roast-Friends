@@ -56,6 +56,9 @@
                    WidthRequest="150"
                    HeightRequest="150"
                    Margin="5">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Frame.GestureRecognizers>
                 <Label Text="BEZPŁATNIE&#x0a;DOŁADUJ"
                        TextColor="White"
                        FontSize="17"
